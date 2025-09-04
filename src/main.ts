@@ -1,9 +1,9 @@
-import { AdaptadorInventario } from "./modulos/Adaptador";
-import { Equipo } from "./modulos/Equipo";
-import { EquipoFactory } from "./modulos/EquipoFactory";
-import { Inventario } from "./modulos/Inventario";
-import { InventarioViejo } from "./modulos/InventarioViejo";
-import { Soporte } from "./modulos/Soporte";
+import { AdaptadorInventario } from "./model/Adaptador";
+import { Equipo } from "./model/Equipo";
+import { EquipoFactory } from "./model/Patron-factory";
+import {  Inventario} from "./model/Patron-singleton";
+import { InventarioViejo } from "./model/InventarioViejo";
+import { Soporte } from "./model/Soporte";
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div>
@@ -16,8 +16,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 // Punto 1 
 
-const inventario = Inventario.obtenerInstancia();
-inventario.agregarEquipo("Notebook HP", "Portátil", "disponible");
+const inventario = Inventario.obtenerInventario();
+inventario.agregarEquipo({ nombre: "Notebook HP", tipo: "Portátil", estado: "disponible" });
 console.log(inventario.listarEquipos());
 
 // Punto 2 
